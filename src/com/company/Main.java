@@ -5,7 +5,6 @@ import com.company.Image.ImageSequence;
 import com.company.Util.DirectoryUtilities;
 import com.company.Video.VideoFile;
 import com.company.Video.VideoSplitter;
-import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 
 import java.awt.*;
@@ -15,7 +14,7 @@ import java.io.IOException;
 public class Main {
 
     public static void main(String[] args) throws IOException {
-        VideoFile videoFile = new VideoFile("D:\\app\\avatar101.mkv");
+        VideoFile videoFile = new VideoFile("D:\\app\\potomki.mkv");
         String timelinePath = videoFile.getParent() + "\\" +
                 FilenameUtils.removeExtension(videoFile.getName()) + ".jpg";
         System.out.println("timeline: " + timelinePath);
