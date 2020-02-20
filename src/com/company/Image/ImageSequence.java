@@ -14,8 +14,7 @@ public class ImageSequence {
         for (int i = 0; i < files.length; i++) {
             ImageEncoder encoder = new ImageEncoder();
             Color[][] colors = encoder.fillColors(directory + i + ".jpg");
-           averageColors[i] = ColorUtilities.blend(colors);
-            System.out.println(averageColors[i].toString());
+            averageColors[i] = ColorUtilities.blend(colors);
         }
         return averageColors;
     }

@@ -25,15 +25,17 @@ public class VideoSplitter {
         VideoCapture cap = videoFile.getFileCapture();
         long frameNumber = videoFile.getFrameNumber();
         long videoLength = videoFile.getVideoLength();
+        int savedFrameNumber = 0;
         Mat frame = new Mat();
         if (cap.isOpened()) {
             if (checkDirectory(outputDirectory)) {
                 if (new File(outputDirectory).mkdir()) {
                     System.out.println("Converting Video...");
-                    cap.read(frame);
                     while (frameNumber <= videoLength) {
-                        Imgcodecs.imwrite(outputDirectory + "" + frameNumber + ".jpg", frame);
-                        frameNumber++;
+                        cap.read(frame);
+                        Imgcodecs.imwrite(outputDirectory + "" + savedFrameNumber + ".jpg", frame);
+                        frameNumber+=videoFile.getFramesPerSecond();
+                        savedFrameNumber++;
                     }
                     videoFile.terminateVideoFile();
                     System.out.println(videoLength + " Frames extracted");
