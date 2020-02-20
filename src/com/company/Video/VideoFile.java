@@ -13,7 +13,6 @@ public class VideoFile extends File {
     private int framesPerSecond;
     private long frameNumber;
     private String pathname;
-    private boolean isOpened;
 
     public VideoFile(String pathname) {
         super(pathname);
@@ -45,31 +44,16 @@ public class VideoFile extends File {
         return videoLength;
     }
 
-    public void setVideoLength(long videoLength) {
-        this.videoLength = videoLength;
-    }
-
     public int getFramesPerSecond() {
         return framesPerSecond;
-    }
-
-    public void setFramesPerSecond(int framesPerSecond) {
-        this.framesPerSecond = framesPerSecond;
     }
 
     public long getFrameNumber() {
         return frameNumber;
     }
 
-    public void setFrameNumber(long frameNumber) {
-        this.frameNumber = frameNumber;
-    }
-
     public VideoCapture getFileCapture() {
         return fileCapture;
     }
 
-    public void setFileCapture(VideoCapture fileCapture) {
-        this.fileCapture = fileCapture;
-    }
 }

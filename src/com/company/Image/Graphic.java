@@ -7,11 +7,10 @@ import java.io.*;
 
 public class Graphic {
 
-    public File drawTimeline(Color[] colors) throws IOException {
+    public File drawTimeline(Color[] colors, String resultFile) throws IOException {
         int width;
         int height;
         int position = 0;
-        final String resultPath = "C:\\result.jpg";
         width = colors.length;
         height = 300;
         BufferedImage bufferedImage = new BufferedImage(
@@ -24,7 +23,7 @@ public class Graphic {
             position++;
         }
         g2d.dispose();
-        File file = new File(resultPath);
+        File file = new File(resultFile);
         ImageIO.write(bufferedImage, "jpg", file);
         return file;
     }
