@@ -40,8 +40,6 @@ public class VideoSplitter {
                         }
                         if(!frame.empty()) {
                             Imgcodecs.imwrite(outputDirectory + "" + savedFrameNumber + ".jpg", frame);
-                            //frameNumber+=videoFile.getFramesPerSecond();
-                            //frameNumber++;
                             savedFrameNumber++;
                         }
                     }

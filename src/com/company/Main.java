@@ -10,26 +10,30 @@ import org.apache.commons.io.FilenameUtils;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) throws IOException {
-        VideoFile videoFile = new VideoFile("D:\\app\\potomki.mkv");
-        String timelinePath = videoFile.getParent() + "\\" +
-                FilenameUtils.removeExtension(videoFile.getName()) + ".jpg";
-        System.out.println("timeline: " + timelinePath);
-        if (videoFile.getVideoLength() > 0) {
-            VideoSplitter videoSplitter = new VideoSplitter(videoFile);
-            String framesDirectory = videoSplitter.splitVideoFile();
-            ImageSequence sequence = new ImageSequence();
-            if (framesDirectory != null) {
-                Color[] colors = sequence.makeColorsArray(framesDirectory);
-                DirectoryUtilities.deleteDirectory(framesDirectory);
-                Graphic graphic = new Graphic();
-                File timelinePicture = graphic.drawTimeline(colors, timelinePath);
-                System.out.println(timelinePicture.getAbsolutePath());
-                Desktop desktop = Desktop.getDesktop();
-                desktop.open(timelinePicture);
+        System.out.println("Enter a path to your video file:");
+        Scanner keyboard = new Scanner(System.in);
+        String answer = keyboard.nextLine();
+        VideoFile inputFile = new VideoFile(answer);
+        if (inputFile.exists()) {
+            String timelinePath = inputFile.getParent() + "\\" +
+                    FilenameUtils.removeExtension(inputFile.getName()) + ".jpg";
+            if (inputFile.getVideoLength() > 0) {
+                VideoSplitter videoSplitter = new VideoSplitter(inputFile);
+                String framesDirectory = videoSplitter.splitVideoFile();
+                ImageSequence sequence = new ImageSequence();
+                if (framesDirectory != null) {
+                    Color[] colors = sequence.makeColorsArray(framesDirectory);
+                    DirectoryUtilities.deleteDirectory(framesDirectory);
+                    Graphic graphic = new Graphic();
+                    File timelinePicture = graphic.drawTimeline(colors, timelinePath);
+                    Desktop desktop = Desktop.getDesktop();
+                    desktop.open(timelinePicture);
+                }
             }
         }
     }
