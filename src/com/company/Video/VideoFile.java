@@ -13,6 +13,7 @@ public class VideoFile extends File {
     private int framesPerSecond;
     private long frameNumber;
     private String pathname;
+    private boolean isOpened;
 
     public VideoFile(String pathname) {
         super(pathname);

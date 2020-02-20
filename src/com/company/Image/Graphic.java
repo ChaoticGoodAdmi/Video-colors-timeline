@@ -13,14 +13,14 @@ public class Graphic {
         int position = 0;
         final String resultPath = "C:\\result.jpg";
         width = colors.length;
-        height = 400;
+        height = 300;
         BufferedImage bufferedImage = new BufferedImage(
                 width, height, BufferedImage.TYPE_INT_RGB);
         Graphics2D g2d = bufferedImage.createGraphics();
         for (Color color :
                 colors) {
             g2d.setColor(color);
-            g2d.fillRect(position, 0, 1, 200);
+            g2d.fillRect(position, 0, 1, height);
             position++;
         }
         g2d.dispose();
